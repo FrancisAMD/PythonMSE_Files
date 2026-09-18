@@ -43,6 +43,8 @@ print(math.sqrt(25)) # 平方根
 '''可以简化昵称'''
 '''import math as m'''
 
+print('圆片面积 / mm² =')
+print(round(math.pi * 5**2, 2)) # round() 函数用于四舍五入，保留两位小数
 
 # %%
 # print(20/0) # 运行时错误 ZeroDivisionError 除数为零
