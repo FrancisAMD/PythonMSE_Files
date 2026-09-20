@@ -3,5 +3,13 @@
     "python-envs.defaultPackageManager": "ms-python.python:conda",
     "python.analysis.extraPathsForPythonProjects": {
     },
-    "python.pythonPath": "D:/SJTU-Course/2026PythonMSE/PythonMSEenv"
+    "python-envs.pythonProjects": [
+        {
+            "path": ".",
+            "envManager": "ms-python.python:conda",
+            "packageManager": "ms-python.python:conda"
+        }
+    ],
+    "files.autoSave": "onWindowChange",
+    "editor.defaultFormatter": "ms-python.python"
 }
