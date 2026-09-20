@@ -136,3 +136,42 @@ print(int(code)) # 转换过后变成了1，不再是001
 material = "steel"
 tag = "Ti-6AI-4V" # 文段内部含有-，防止被干成减号
 # a = 'I'm a student' 这样就bug了
+# 切片
+sample_id = "S01"
+print(sample_id[0]) # 输出S，访问单个成员，对每一个char编号
+print(len(sample_id)) # 长度是3
+print(type(sample_id[0]).__name__) # 单个成员的type也是str
+# 相当于是一个关于字符串的列表
+print(sample_id[-1]) # 最后一个
+print(sample_id[len(sample_id)-1]) # 同样是最后一个
+print(sample_id[0:1]) # 访问前几个成员，从零开始
+# 如果访问超过的，S01只有三个成员，访问3及以上，会index out of range索引爆了
+sample_id = "B01-S03"
+print(sample_id[:3]) # 一直到第四个的前面，不包含终点
+'''未完待续'''
+# 字符串可以运算，加就是连接
+sample_id = 'S' + '01'
+print(sample_id) # 这样就是S01，没有减法和除法
+print('-' * 8) # 这样是--------
+# 字符串随意分割，判断
+print("S0" in sample_id) # True
+print("s0" in sample_id) # False
+# 字符串和整数不能直接相加
+print(sample_id + str(1)) # 先转换
+# 可以通过 dir(" ") 预览支持python对字符串的什么操作
+sample1_id = "S04-pllllleee"
+capsample1_id = sample1_id.upper()
+print(capsample1_id)
+# 使用 f 以 format
+sample2_id = "  S01         "
+print(f"[{sample2_id.rstrip()}]")
+# f string 快捷定义变量，字符串扩展功能，这个中间还能自动分号分隔
+sam_id = 1.0
+print(f"Sam ID1: {sam_id}; Sam ID2: {sample_id}")
+# 不然就tm和c++那样
+print("Sam ID1:",sam_id,"Sam ID2:",sample_id)
+# 转义符
+print("string transcript\n000011111UUUiiisododoOOOOOOOOOOi")
+print("姓名\t年龄\t城市")
+print("张三\t18\t北京")
+print("李四\t20\t上海")
