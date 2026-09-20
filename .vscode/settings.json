@@ -1,4 +1,7 @@
 {
     "python-envs.defaultEnvManager": "ms-python.python:conda",
-    "python-envs.defaultPackageManager": "ms-python.python:conda"
+    "python-envs.defaultPackageManager": "ms-python.python:conda",
+    "python.analysis.extraPathsForPythonProjects": {
+        "python.pythonPath": "D:\SJTU-Course\2026PythonMSE\PythonMSEenv"
+    }
 }
