@@ -11,5 +11,6 @@
         }
     ],
     "files.autoSave": "onWindowChange",
-    "editor.defaultFormatter": "ms-python.python"
+    "editor.defaultFormatter": "ms-python.python",
+    "python.analysis.autoImportCompletions": true
 }

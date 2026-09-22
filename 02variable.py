@@ -83,6 +83,8 @@ print(int(-2.8))  # -2
 print(26,0b11010,0o32,0x1a)  # 26 26 26 26
 print(bin(26),oct(26),hex(26))  # 0b11010 0o32 0x1a 返回字符串
 print(int("1a",16))  # 26 转换字符串到数字，告诉python字符串内的是16进制数
+oct_num = 0o77
+print(oct_num)
 
 # 整除与取余
 print(7/3)  # 2.3333333333333335
@@ -175,3 +177,91 @@ print("string transcript\n000011111UUUiiisododoOOOOOOOOOOi")
 print("姓名\t年龄\t城市")
 print("张三\t18\t北京")
 print("李四\t20\t上海")
+
+print("\n") # 这是输出一个换行符
+print(r"\n") # 打印出原始的字符串
+print("S01\nsteel")
+
+# SB windows 路径bug
+path_a = "D:\\new_data.txt" # \\ 可以直接换成单\
+path_b = r"D:\new_data.txt"
+path_c = "D:/new_data.txt"
+print(path_a,path_b,path_c)
+
+# unicode
+print(ord("A"))
+print(chr(65))
+print(ord("钢"))
+
+# str bytes
+text = "钢A"
+data = text.encode("utf-8")
+print(len(text),len(data)) # data 长度是4，钢ord 38050 
+print(hex(ord("钢")))
+print(data.hex())
+print(16**6)
+
+# print 和 repr
+sample = " S01\n"
+print(repr(sample))
+print(f'{sample}') # 留了一个换行
+
+# str 检查操作
+name = "B01-S03.csv"
+print(name.find("S03")) # 第一次出现的位置的索引 4 第五位
+print(name.find("S99")) # -1 没有这样的值
+print(name.count("-")) # 1 计数
+print(name.startswith("B01-")) # True 正确的，开始于
+print(name.endswith('ppt')) # False
+s= "S01-S02-S03"
+print(s.find("S",2)) # 从下标2开始找
+# 分割怎么弄
+# 替换怎么弄
+# 判断怎么判断
+
+# 大小运算比较
+temperature_c = 25.0
+print(20.0 <= temperature_c <= 30.0) # True
+print("10" < "2") # 字符串
+print(int("10") < int("2"))
+# print("25.0"<30.0) 报错
+print(ord("1"),ord("2")) #????"10"的码位比较小？？？
+
+# 逻辑运算
+sample_id = "S03"
+print(temperature_c >= 20 and temperature_c <= 30) # Ture
+print(not sample_id == "S01") # False
+
+# 短路求值和返回对象
+volume_cm3 = 0.0
+mass_g = 7.85
+print(volume_cm3 != 0
+      and mass_g / volume_cm3 > 0)
+operator_name = ""
+print(operator_name or "未填写")
+print(0.0 or 25.0)
+# 如果是 A and B 的判断，先判断 A，若A false 则不再继续判断B
+# A or B 若判断 A 为 True 则不再继续判断
+
+# 整数的按位运算
+a = 0b1010
+b = 0b1100
+print(format(a & b, "04b")) # 按位置从左到右依次比较，两个都是1才Ture 1000
+print(format(a | b, "04b")) # 04b是写成2进制，4是最少4位，0若不够补零
+print(format(a ^ b, "04b")) # 异或可以是不一样是1，当然等价于&+| 的个位数
+print(a << 1, a >> 1, ~a) # 对非负整数，<<左移相当于乘2的幂，>>右移相当于整除2，在二进制下左右移几位
+# Python整数的~x等于-x-1，并未固定为8位
+# 二进制可以对应一些机器的状态码
+CONNECTED = 0b001
+RECORDING = 0b010
+ALARM = 0b100
+status = CONNECTED | RECORDING # 011
+print(status & ALARM != 0) # 011 & 1
+status |= ALARM
+print(format(status, "03b"))
+print(status & ALARM != 0)
+
+
+# 优先级
+a = 'abc,sd0'
+print(4*a.split(",")[1]) #sd0sd0sd0sd0
