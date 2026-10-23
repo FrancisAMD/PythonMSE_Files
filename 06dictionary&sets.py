@@ -71,10 +71,14 @@ composition_wt_list = [('Cr',16),('Mn',1),('C',0.1)]
 composition_wt = dict(composition_wt_list)
 
 s = 0.0
+'''
 for elem in composition_wt:
     s += composition_wt[elem]
 # print(s)
 composition_wt['Fe'] = 100 - s
+'''
+# 可以用sum value 替代
+composition_wt['Fe'] = 100 - sum(composition_wt.values())
 
 # for elem in composition_wt:
 #    print(elem,composition_wt[elem])
@@ -89,3 +93,74 @@ for elem in composition_wt:
 for elem in composition_wt:
     molar_pct[elem] = composition_wt[elem] / atomic_mass[elem] / total_mole * 100
     print(f'{elem} 的摩尔百分比是 {molar_pct[elem]:.2f}%')
+
+for elem, pt in (
+    composition_wt.items()
+):
+    print(f'element:{elem},weight percent:{pt}') # 组合输出键和值
+# 同理，.keys()或者不加，默认都输出键，.values()输出值
+
+# key ijn dictionary 可以检查键
+composition = {'Fe':88.0, 'Cr':12.0}
+required_elements = ['Fe','Cr','Mn','Ni']
+#??????
+
+# 按照特定的顺序遍历键
+composition = {'Fe':88.0, 'Cr':12.0}
+# for element in composition.sorted():
+
+# 字典视图与列表快照
+mass_by_id = {"S01":7.8}
+keys_view = mass_by_id.keys()
+keys_snapshot = list(keys_view) # 拿出来了就是静止在新的里面的
+mass_by_id['S02'] = 7.85
+print(list(keys_view)) # ['S01','S02'] keys values items 返回的值会动态更新
+print(keys_snapshot) # ['S01']
+
+# 键和值的比较
+a = {'S01': 7.8}
+b = {'S02': 7.8}
+print(a.keys() == b.keys)
+print(a == b) # 都是 Ture
+
+# 集合set 不同，自动去重
+state_by_id = {"S01": "annealed",
+               "S02": "normalized",
+               "S03": "annealed"}
+unique_states = set(state_by_id.values())
+print(sorted(unique_states)) # 进行排序
+print(len(unique_states))
+
+
+elements = {"Fe", "Cr", "Fe"}
+empty_mapping = {}
+empty_set = set()
+print(sorted(elements))
+print(type(empty_mapping), type(empty_set))
+
+# 字典的推导式
+wt_pct = {'Fe':88.0, 'Cr':12.0}
+fractions = {
+    element : pct / 100
+    for element, pct in wt_pct.items()
+}
+print(fractions)
+
+# 两个列表建立字典
+sample_ids = ["S01", "S02"]
+masses_g = [7.8, 7.85]
+if len(sample_ids) != len(set(sample_ids)): # 进行去重，防止mass有重复的
+    print("Duplicate sample IDs")
+else:
+    mass_by_id = dict(zip(
+        sample_ids, masses_g, strict=True))
+    print(mass_by_id)
+
+# 列表嵌套字典，然后二维地，从嵌套的里面进行取值
+s1 = {"id": "S01", "mass_g": 7.80}
+s2 = {"id": "S02", "mass_g": 7.85}
+s3 = {"id": "AL01", "mass_g": 2.70}
+samples = [s1, s2, s3]
+for sample in samples:
+    print(f"{sample['id']}: "
+          f"{sample['mass_g']:.2f} g")
